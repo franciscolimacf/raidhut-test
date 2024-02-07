@@ -13,6 +13,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const port = process.env.APP_PORT || 3000;
 const secret = process.env.SESSION_SECRET || "frasesecreta";
 
 app.use(
@@ -32,6 +33,6 @@ const db_connection = require("./config/db");
 
 app.use("/user", userRoutes);
 
-app.listen(3000, function () {
-  console.log("App running on port 3000");
+app.listen(port, function () {
+  console.log(`App running on port ${port}`);
 });
