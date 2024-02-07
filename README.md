@@ -10,6 +10,7 @@ env variables:
 APP_PORT=
 
 DB_URL=
+
 DB_DATABASE=
 
 SESSION_SECRET=
