@@ -40,5 +40,5 @@ app.use("/user", userRoutes);
 app.use("/", pageRoutes);
 
 app.listen(port, function () {
-  console.log(`App running on port http://localhost:${port}`);
+  console.log(`Front-end running on port http://localhost:${port}`);
 });

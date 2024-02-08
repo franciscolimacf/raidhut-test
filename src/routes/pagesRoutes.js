@@ -20,13 +20,14 @@ router.get("/register", function (req, res) {
 });
 router.get("/profile", async function (req, res) {
   if (req.isAuthenticated()) {
+    const foundUser = await User.findOne({ username: req.user.username });
     const foundLogs = await Log.find({ username: req.user.username }).sort({
       createdAt: -1,
     });
 
-    res.render("profile", { activity: foundLogs });
+    res.render("profile", { activity: foundLogs, user: foundUser });
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 });
 

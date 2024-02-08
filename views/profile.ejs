@@ -3,6 +3,9 @@
 <div class="jumbotron text-center">
   <div class="container">
     <i class="fa-solid fa-user fa-6x"></i>
+    <p class="display-4"><%= user.username %></p>
+    <p class="display-5">Your Id: <%= user.id %></p>
+    <p class="display-5">Your Email: <%= user.email %></p>
 
     <hr />
     <a class="btn btn-dark btn-lg" href="/changeemail" role="button"
@@ -12,7 +15,11 @@
       >Change Password</a
     >
     <hr />
-    <h1 class="display-3">Here is your account activity</h1>
+    <form action="/user/delete?_method=DELETE" method="post">
+      <button type="submit" class="btn btn-light btn-lg">Delete Account</button>
+    </form>
+    <hr />
+    <h1 class="display-4">Here is your account activity</h1>
 
     <% activity.forEach(function(log){ %>
     <p class="secret-text">

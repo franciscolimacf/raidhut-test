@@ -181,7 +181,7 @@ class UserController {
           });
           newEvent.save();
 
-          res.status(200).json("user deleted");
+          res.redirect("/");
         }
       });
     } else {
@@ -198,9 +198,13 @@ class UserController {
   async profile(req, res) {
     if (req.isAuthenticated()) {
       const foundUser = await User.findOne({ username: req.user.username });
-      res.status(200).json(foundUser);
+      const foundLogs = await Log.find({ username: req.user.username }).sort({
+        createdAt: -1,
+      });
+
+      res.render("profile", { activity: foundLogs, user: foundUser });
     } else {
-      res.status(401).json({ message: "user not authenticated" });
+      res.redirect("/");
     }
   }
 
