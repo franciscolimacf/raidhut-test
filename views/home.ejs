@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron centered">
+  <div class="container">
+    <% if(locals.user) {%>
+    <h1 class="display-3">Welcome <%= user.username %></h1>
+    <p class="lead">You can access your profile, or logout</p>
+    <hr />
+    <a class="btn btn-light btn-lg" href="/user/logout" role="button">Logout</a>
+    <a class="btn btn-dark btn-lg" href="/profile" role="button">Profile</a>
+
+    <% } else {%>
+
+    <h1 class="display-3">Welcome to my App</h1>
+    <p class="lead">
+      You can register a new account, or login with an existing one
+    </p>
+    <hr />
+    <a class="btn btn-light btn-lg" href="/register" role="button">Register</a>
+    <a class="btn btn-dark btn-lg" href="/login" role="button">Login</a>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

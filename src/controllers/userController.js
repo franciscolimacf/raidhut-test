@@ -51,7 +51,7 @@ class UserController {
             });
             newEvent.save();
 
-            res.status(200).json("user registered and authenticated");
+            res.redirect("/");
           });
         }
       }
@@ -84,7 +84,7 @@ class UserController {
           });
           newEvent.save();
 
-          res.status(200).json("user authenticated");
+          res.redirect("/");
         });
       }
     });
@@ -101,7 +101,7 @@ class UserController {
         console.log(err);
         res.status(400).json({ error: err });
       } else {
-        res.status(200).json("user logged out");
+        res.redirect("/");
       }
     });
   }
@@ -133,8 +133,8 @@ class UserController {
               event: "User changed password",
             });
             newEvent.save();
-
-            res.status(200).json({ message: "password reset successful" });
+            foundUser.save();
+            res.redirect("/profile");
           });
         });
       }
@@ -152,10 +152,10 @@ class UserController {
         });
         newEvent.save();
 
-        res.status(200).json({ message: "email changed successfully" });
+        res.redirect("/profile");
       }
     } else {
-      res.status(401).json({ message: "user not authenticated" });
+      res.redirect("/");
     }
   }
 
@@ -185,7 +185,7 @@ class UserController {
         }
       });
     } else {
-      res.status(401).json({ message: "user not authenticated" });
+      res.redirect("/");
     }
   }
 

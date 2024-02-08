@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <i class="fa-solid fa-user fa-6x"></i>
+
+    <hr />
+    <a class="btn btn-dark btn-lg" href="/changeemail" role="button"
+      >Change Email</a
+    >
+    <a class="btn btn-dark btn-lg" href="/changepassword" role="button"
+      >Change Password</a
+    >
+    <hr />
+    <h1 class="display-3">Here is your account activity</h1>
+
+    <% activity.forEach(function(log){ %>
+    <p class="secret-text">
+      Event: <%= log.event %> at: <%= log.createdAt.getDate() %>/<%=
+      log.createdAt.getMonth() %>/<%= log.createdAt.getFullYear() %> <%=
+      log.createdAt.getHours() %>:<%= log.createdAt.getMinutes() %>:<%=
+      log.createdAt.getSeconds() %>
+    </p>
+
+    <% }) %>
+
+    <hr />
+    <a class="btn btn-dark btn-lg" href="/" role="button">Back to Home</a>
+    <a class="btn btn-light btn-lg" href="/user/logout" role="button"
+      >Log Out</a
+    >
+  </div>
+</div>
+
+<%- include('partials/footer') %>
